@@ -1,32 +1,66 @@
-# React + TypeScript + Vite
+# 🥧 La House - Sistema de Gestión de Tartas Caseras Saladas
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Sistema web progresivo (**PWA**) diseñado específicamente para la gestión integral de un emprendimiento gastronómico de tartas caseras saladas (frizadas, listas para el horno).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Características Principales
 
-## React Compiler
+- **📱 Mobile-First & PWA**: Instalable en celulares Android e iOS como una app nativa.
+- **🔐 Perfiles con PIN Rápido**: 2 cuentas de acceso ágil (Tomás y Sofi) con clave PIN de 4 dígitos.
+- **🥧 Catálogo de 9 Sabores Salados**:
+  - Jamón y Queso
+  - Cebolla y Queso (Fugazzeta)
+  - Calabaza y Queso
+  - Calabaza y Cebollita Caramelizada
+  - Verduras Asadas
+  - Pollo y Puerro
+  - Pollo y Roquefort
+  - Pollo y Cebollita Caramelizada
+  - Brócoli y Queso
+- **📦 Stock Híbrido**: Control de tartas frizadas elaboradas + insumos de packaging (cajas, film, bases) con alertas de stock bajo.
+- **🛒 Punto de Venta & WhatsApp**:
+  - Registro de ventas en 3 toques.
+  - Generación de mensajes automáticos de confirmación, aviso de "Pedido Listo" (con instrucciones de horneado) y recordatorio de cobros.
+- **💰 Cobros, Fiados & Gastos**:
+  - Arqueo de caja (Efectivo vs MercadoPago / Transferencia).
+  - Cuentas corrientes con botón de cobro rápido.
+  - Registro de gastos y cálculo de **Ganancia Neta Real**.
+- **👥 CRM de Clientes**: Ficha con sabores favoritos, historial de compras y detección de clientes inactivos (+20 días).
+- **📊 Estadísticas & Exportación Excel**: Gráficos de facturación, ranking de sabores más vendidos y exportación completa a `.xlsx`.
+- **☁️ Supabase Cloud Sync**: Listo para sincronizar en tiempo real entre múltiples dispositivos con Supabase PostgreSQL.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tecnologías
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Frontend**: React 19, TypeScript, Vite
+- **Estilos**: TailwindCSS, Lucide Icons, Canvas Confetti
+- **Gráficos & Exportación**: Recharts, SheetJS (XLSX)
+- **Base de Datos**: LocalStorage / Supabase PostgreSQL con Realtime
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+---
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 💻 Instalación y Desarrollo Local
+
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/msardissino/LaHouse.git
+   cd LaHouse
+   ```
+
+2. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Iniciar el servidor local:
+   ```bash
+   npm run dev
+   ```
+   Abrir `http://localhost:5173/` en el navegador.
+
+4. Compilar para producción:
+   ```bash
+   npm run build
+   ```
