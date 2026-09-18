@@ -23,6 +23,7 @@ export const INITIAL_SETTINGS: BusinessSettings = {
   paymentAlias: 'lahouse.tartas.mp',
   paymentCbu: '0000003100012345678901',
   currencySymbol: '$',
+  standardPrice: 9000,
   enableSound: true,
   lowStockAlert: true,
 };
@@ -32,9 +33,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-1',
     name: 'Jamón y Queso',
     description: 'Abundante muzzarella fundida, jamón cocido seleccionado y masa casera hojaldrada.',
-    price: 8900,
+    price: 9000,
     active: true,
-    color: '#E11D48', // Red / Ham
+    color: '#E11D48',
     category: 'Clásicas',
     created_at: new Date().toISOString()
   },
@@ -42,9 +43,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-2',
     name: 'Cebolla y Queso (Fugazzeta)',
     description: 'Cebollas salteadas al dente, lluvia de orégano y mix de quesos cremosos.',
-    price: 8500,
+    price: 9000,
     active: true,
-    color: '#D97706', // Caramel
+    color: '#D97706',
     category: 'Vegetarianas',
     created_at: new Date().toISOString()
   },
@@ -52,9 +53,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-3',
     name: 'Calabaza y Queso',
     description: 'Puré de calabaza asada bien condimentada con corazón de queso cremoso derretido.',
-    price: 8500,
+    price: 9000,
     active: true,
-    color: '#F97316', // Pumpkin orange
+    color: '#F97316',
     category: 'Vegetarianas',
     created_at: new Date().toISOString()
   },
@@ -62,9 +63,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-4',
     name: 'Calabaza y Cebollita Caramelizada',
     description: 'Calabaza dulce asada al horno combinada con cebollitas caramelizadas y queso.',
-    price: 8900,
+    price: 9000,
     active: true,
-    color: '#CA8A04', // Warm gold
+    color: '#CA8A04',
     category: 'Especiales',
     created_at: new Date().toISOString()
   },
@@ -72,9 +73,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-5',
     name: 'Verduras Asadas',
     description: 'Mix de morrones, zucchini, berenjena y cebolla braseadas con hierbas aromáticas.',
-    price: 8900,
+    price: 9000,
     active: true,
-    color: '#15803D', // Green
+    color: '#15803D',
     category: 'Vegetarianas',
     created_at: new Date().toISOString()
   },
@@ -82,9 +83,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-6',
     name: 'Pollo y Puerro',
     description: 'Pechuga de pollo desmenuzada jugosa con puerros confitados a la crema.',
-    price: 9500,
+    price: 9000,
     active: true,
-    color: '#10B981', // Emerald
+    color: '#10B981',
     category: 'Pollo',
     created_at: new Date().toISOString()
   },
@@ -92,9 +93,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-7',
     name: 'Pollo y Roquefort',
     description: 'Pollo braseado con intenso queso azul roquefort fundido y muzzarella.',
-    price: 9800,
+    price: 9000,
     active: true,
-    color: '#2563EB', // Blue
+    color: '#2563EB',
     category: 'Pollo',
     created_at: new Date().toISOString()
   },
@@ -102,9 +103,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-8',
     name: 'Pollo y Cebollita Caramelizada',
     description: 'Suprema de pollo sazonada con toque dulce de cebollas caramelizadas y queso.',
-    price: 9500,
+    price: 9000,
     active: true,
-    color: '#B45309', // Brown amber
+    color: '#B45309',
     category: 'Pollo',
     created_at: new Date().toISOString()
   },
@@ -112,9 +113,9 @@ export const INITIAL_FLAVORS: Flavor[] = [
     id: 'fl-9',
     name: 'Brócoli y Queso',
     description: 'Brócoli fresco al vapor, salsa blanca casera con nuez moscada y queso gratinado.',
-    price: 8900,
+    price: 9000,
     active: true,
-    color: '#166534', // Dark green
+    color: '#166534',
     category: 'Vegetarianas',
     created_at: new Date().toISOString()
   }
@@ -198,7 +199,7 @@ export const INITIAL_CLIENTS: Client[] = [
     address: 'Av. Libertador 4520, 4to B',
     notes: 'Pide siempre de a 2 para tener en el freezer para la semana.',
     total_orders: 4,
-    total_spent: 37600,
+    total_spent: 36000,
     favorite_flavor_ids: ['fl-6', 'fl-1'],
     last_order_date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
     debt: 0,
@@ -211,10 +212,10 @@ export const INITIAL_CLIENTS: Client[] = [
     address: 'Calle Olazábal 2340',
     notes: 'Fan de la de Pollo y Roquefort. Suele pagar por transferencia.',
     total_orders: 3,
-    total_spent: 28200,
+    total_spent: 27000,
     favorite_flavor_ids: ['fl-7'],
     last_order_date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
-    debt: 9800, // Debe 1 tarta
+    debt: 9000, // Debe 1 tarta de $9000
     created_at: new Date(Date.now() - 40 * 24 * 60 * 60 * 1000).toISOString()
   },
   {
@@ -224,7 +225,7 @@ export const INITIAL_CLIENTS: Client[] = [
     address: 'Juramento 1900, PB 1',
     notes: 'Pide las vegetarianas (Calabaza caramelizada y Brócoli).',
     total_orders: 5,
-    total_spent: 44000,
+    total_spent: 45000,
     favorite_flavor_ids: ['fl-4', 'fl-9'],
     last_order_date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
     debt: 0,
@@ -239,7 +240,7 @@ export const INITIAL_CLIENTS: Client[] = [
     total_orders: 3,
     total_spent: 27000,
     favorite_flavor_ids: ['fl-1', 'fl-8'],
-    last_order_date: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000).toISOString(), // Inactivo > 20 dias
+    last_order_date: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000).toISOString(),
     debt: 0,
     created_at: new Date(Date.now() - 75 * 24 * 60 * 60 * 1000).toISOString()
   }
@@ -262,22 +263,22 @@ export const INITIAL_ORDERS: Order[] = [
         flavor_id: 'fl-6',
         flavor_name: 'Pollo y Puerro',
         quantity: 1,
-        unit_price: 9500,
-        subtotal: 9500
+        unit_price: 9000,
+        subtotal: 9000
       },
       {
         id: 'item-2',
         flavor_id: 'fl-1',
         flavor_name: 'Jamón y Queso',
         quantity: 1,
-        unit_price: 8900,
-        subtotal: 8900
+        unit_price: 9000,
+        subtotal: 9000
       }
     ],
-    total: 18400,
+    total: 18000,
     payment_status: 'paid',
     payment_method: 'transfer',
-    amount_paid: 18400,
+    amount_paid: 18000,
     debt_amount: 0,
     delivery_status: 'ready',
     delivery_date: todayStr,
@@ -299,15 +300,15 @@ export const INITIAL_ORDERS: Order[] = [
         flavor_id: 'fl-7',
         flavor_name: 'Pollo y Roquefort',
         quantity: 1,
-        unit_price: 9800,
-        subtotal: 9800
+        unit_price: 9000,
+        subtotal: 9000
       }
     ],
-    total: 9800,
+    total: 9000,
     payment_status: 'pending',
     payment_method: 'cash',
     amount_paid: 0,
-    debt_amount: 9800,
+    debt_amount: 9000,
     delivery_status: 'preparing',
     delivery_date: todayStr,
     delivery_time: '19:00',
@@ -328,23 +329,23 @@ export const INITIAL_ORDERS: Order[] = [
         flavor_id: 'fl-4',
         flavor_name: 'Calabaza y Cebollita Caramelizada',
         quantity: 1,
-        unit_price: 8900,
-        subtotal: 8900
+        unit_price: 9000,
+        subtotal: 9000
       },
       {
         id: 'item-5',
         flavor_id: 'fl-9',
         flavor_name: 'Brócoli y Queso',
         quantity: 1,
-        unit_price: 8900,
-        subtotal: 8900
+        unit_price: 9000,
+        subtotal: 9000
       }
     ],
-    total: 17800,
+    total: 18000,
     payment_status: 'partial',
     payment_method: 'transfer',
     amount_paid: 10000,
-    debt_amount: 7800,
+    debt_amount: 8000,
     delivery_status: 'pending',
     delivery_date: tomorrowStr,
     delivery_time: '15:00',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StockItem, Flavor } from '../types';
+import { StockItem, Flavor, BusinessSettings } from '../types';
 import { formatCurrency } from '../utils/helpers';
 import {
   Package,
@@ -10,19 +10,21 @@ import {
   Boxes,
   Edit2,
   Trash2,
-  Check,
-  Flame
+  DollarSign,
+  CheckCircle2
 } from 'lucide-react';
 
 interface StockViewProps {
   stock: StockItem[];
   flavors: Flavor[];
+  businessSettings: BusinessSettings;
   onUpdateStockQty: (itemId: string, delta: number) => void;
   onSetStockQty: (itemId: string, qty: number) => void;
   onOpenNewFlavor: () => void;
   onEditFlavor: (flavor: Flavor) => void;
   onDeleteFlavor: (flavorId: string) => void;
   onOpenNewPackagingItem: () => void;
+  onUpdateStandardPrice: (price: number) => void;
 }
 
 type StockTab = 'ready_tartas' | 'flavors' | 'packaging';
@@ -30,14 +32,18 @@ type StockTab = 'ready_tartas' | 'flavors' | 'packaging';
 export const StockView: React.FC<StockViewProps> = ({
   stock,
   flavors,
+  businessSettings,
   onUpdateStockQty,
   onSetStockQty,
   onOpenNewFlavor,
   onEditFlavor,
   onDeleteFlavor,
   onOpenNewPackagingItem,
+  onUpdateStandardPrice,
 }) => {
   const [activeTab, setActiveTab] = useState<StockTab>('ready_tartas');
+  const [isEditingGlobalPrice, setIsEditingGlobalPrice] = useState(false);
+  const [tempPrice, setTempPrice] = useState(businessSettings.standardPrice?.toString() || '9000');
 
   const readyTartas = stock.filter((s) => s.type === 'ready_tarta');
   const packagingItems = stock.filter((s) => s.type === 'packaging' || s.type === 'supply');
@@ -185,7 +191,70 @@ export const StockView: React.FC<StockViewProps> = ({
 
       {/* Tab 2: Flavors & Prices Catalog */}
       {activeTab === 'flavors' && (
-        <div className="space-y-3">
+        <div className="space-y-4">
+          
+          {/* Global Single Price Banner */}
+          <div className="p-4 rounded-3xl bg-gradient-to-r from-emerald-500/10 via-brand-500/10 to-amber-500/10 border border-emerald-500/30 dark:border-emerald-500/20 shadow-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-500 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-emerald-500/20">
+                🏷️
+              </div>
+              <div>
+                <h4 className="font-bold text-sm text-stone-900 dark:text-white">
+                  Precio Único de Tartas: <span className="text-emerald-600 dark:text-emerald-400 font-black">{formatCurrency(businessSettings.standardPrice || 9000)}</span>
+                </h4>
+                <p className="text-xs text-stone-500 dark:text-stone-400">
+                  Todas las tartas saladas tienen el mismo valor estándar.
+                </p>
+              </div>
+            </div>
+
+            {isEditingGlobalPrice ? (
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <input
+                  type="number"
+                  min={0}
+                  step={100}
+                  value={tempPrice}
+                  onChange={(e) => setTempPrice(e.target.value)}
+                  className="w-24 px-3 py-1.5 rounded-xl border border-emerald-500 bg-white dark:bg-stone-800 text-stone-900 dark:text-white font-bold text-xs outline-none"
+                  placeholder="9000"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const num = parseFloat(tempPrice);
+                    if (num > 0) {
+                      onUpdateStandardPrice(num);
+                      setIsEditingGlobalPrice(false);
+                    }
+                  }}
+                  className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-sm"
+                >
+                  Guardar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsEditingGlobalPrice(false)}
+                  className="px-2.5 py-1.5 bg-stone-200 dark:bg-stone-700 text-stone-700 dark:text-stone-300 font-semibold text-xs rounded-xl"
+                >
+                  ✕
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setTempPrice(businessSettings.standardPrice?.toString() || '9000');
+                  setIsEditingGlobalPrice(true);
+                }}
+                className="py-2 px-3.5 bg-white dark:bg-stone-800 hover:bg-stone-50 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-100 font-bold text-xs rounded-2xl border border-stone-200 dark:border-stone-700 shadow-sm transition-all shrink-0 active:scale-95"
+              >
+                Cambiar Precio General
+              </button>
+            )}
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {flavors.map((flavor) => (
               <div

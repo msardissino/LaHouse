@@ -166,6 +166,25 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50/50 dark:bg-stone-800 text-stone-800 dark:text-stone-100 text-xs font-semibold focus:ring-2 focus:ring-brand-500 outline-none"
             />
           </div>
+
+          <div className="sm:col-span-2">
+            <label className="block text-xs font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+              <span>🏷️</span>
+              Precio Único de Tartas Saladas ($)
+            </label>
+            <input
+              type="number"
+              min={0}
+              step={100}
+              required
+              value={formData.standardPrice || 9000}
+              onChange={(e) => setFormData({ ...formData, standardPrice: parseFloat(e.target.value) || 0 })}
+              className="w-full px-3.5 py-2.5 rounded-xl border border-emerald-500/80 bg-emerald-50/30 dark:bg-stone-800 text-stone-900 dark:text-white text-xs font-black focus:ring-2 focus:ring-emerald-500 outline-none"
+            />
+            <span className="text-[11px] text-stone-500 mt-1 block">
+              Al guardar, este precio se aplicará automáticamente a todos los sabores del menú.
+            </span>
+          </div>
         </div>
 
         {/* Supabase Cloud Connection */}

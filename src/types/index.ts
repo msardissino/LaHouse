@@ -97,6 +97,7 @@ export type BusinessSettings = {
   paymentAlias: string;
   paymentCbu?: string;
   currencySymbol: string;
+  standardPrice: number; // Single standard price for all savory pies
   enableSound: boolean;
   lowStockAlert: boolean;
   supabaseUrl?: string;

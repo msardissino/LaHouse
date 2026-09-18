@@ -118,10 +118,23 @@ class DatabaseService {
     this.initSupabase();
   }
 
+  public updateStandardPrice(newPrice: number): void {
+    const settings = this.getSettings();
+    settings.standardPrice = newPrice;
+    this.saveSettings(settings);
+
+    // Update all flavor prices
+    const flavors = this.getFlavors().map((f) => ({
+      ...f,
+      price: newPrice,
+    }));
+    this.saveFlavors(flavors);
+  }
+
   // --- Flavors ---
   public getFlavors(): Flavor[] {
     const data = localStorage.getItem(STORAGE_KEYS.FLAVORS);
-    if (!data || data.includes('Lemon Pie')) {
+    if (!data || data.includes('Lemon Pie') || data.includes('8900') || data.includes('9500')) {
       localStorage.setItem(STORAGE_KEYS.FLAVORS, JSON.stringify(INITIAL_FLAVORS));
       localStorage.setItem(STORAGE_KEYS.STOCK, JSON.stringify(INITIAL_STOCK));
       localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(INITIAL_ORDERS));

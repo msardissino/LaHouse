@@ -116,8 +116,19 @@ export function App() {
   };
 
   const handleSaveSettings = (newSettings: BusinessSettings) => {
-    db.saveSettings(newSettings);
+    if (newSettings.standardPrice && newSettings.standardPrice !== settings.standardPrice) {
+      db.updateStandardPrice(newSettings.standardPrice);
+      setFlavors(db.getFlavors());
+    } else {
+      db.saveSettings(newSettings);
+    }
     setSettings(newSettings);
+  };
+
+  const handleUpdateStandardPrice = (newPrice: number) => {
+    db.updateStandardPrice(newPrice);
+    setSettings(db.getSettings());
+    setFlavors(db.getFlavors());
   };
 
   // Orders
@@ -274,6 +285,7 @@ export function App() {
           <StockView
             stock={stock}
             flavors={flavors}
+            businessSettings={settings}
             onUpdateStockQty={handleUpdateStockQty}
             onSetStockQty={handleSetStockQty}
             onOpenNewFlavor={() => {
@@ -286,6 +298,7 @@ export function App() {
             }}
             onDeleteFlavor={handleDeleteFlavor}
             onOpenNewPackagingItem={() => setShowNewPackagingModal(true)}
+            onUpdateStandardPrice={handleUpdateStandardPrice}
           />
         )}
 
