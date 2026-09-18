@@ -3,15 +3,15 @@ import { UserProfile, Flavor, StockItem, Client, Order, Expense, BusinessSetting
 export const INITIAL_PROFILES: UserProfile[] = [
   {
     id: 'user-1',
-    name: 'Tomás',
-    pin: '1234',
+    name: 'Marcos',
+    pin: '1420',
     avatarColor: '#1B4332',
     role: 'owner'
   },
   {
     id: 'user-2',
-    name: 'Sofi',
-    pin: '1234',
+    name: 'Daniela',
+    pin: '1420',
     avatarColor: '#D97706',
     role: 'partner'
   }
@@ -285,7 +285,7 @@ export const INITIAL_ORDERS: Order[] = [
     delivery_time: '18:30',
     delivery_address: 'Av. Libertador 4520, 4to B',
     notes: 'Entregar frizadas con etiquetas.',
-    created_by: 'Tomás',
+    created_by: 'Marcos',
     created_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
   },
   {
@@ -314,7 +314,7 @@ export const INITIAL_ORDERS: Order[] = [
     delivery_time: '19:00',
     delivery_address: 'Retira por taller',
     notes: 'Pasa a retirar por la tarde con conservadora.',
-    created_by: 'Sofi',
+    created_by: 'Daniela',
     created_at: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString()
   },
   {
@@ -351,7 +351,7 @@ export const INITIAL_ORDERS: Order[] = [
     delivery_time: '15:00',
     delivery_address: 'Juramento 1900, PB 1',
     notes: 'Dejó $10.000 de seña por MP. Resta saldo al entregar.',
-    created_by: 'Tomás',
+    created_by: 'Marcos',
     created_at: new Date(Date.now() - 10 * 60 * 60 * 1000).toISOString()
   }
 ];
@@ -364,7 +364,7 @@ export const INITIAL_EXPENSES: Expense[] = [
     amount: 19500,
     date: todayStr,
     payment_method: 'transfer',
-    created_by: 'Tomás',
+    created_by: 'Marcos',
     created_at: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
   },
   {
@@ -374,7 +374,7 @@ export const INITIAL_EXPENSES: Expense[] = [
     amount: 32000,
     date: todayStr,
     payment_method: 'cash',
-    created_by: 'Sofi',
+    created_by: 'Daniela',
     created_at: new Date().toISOString()
   }
 ];

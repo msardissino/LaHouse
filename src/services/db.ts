@@ -63,8 +63,9 @@ class DatabaseService {
   // --- Profiles & Auth ---
   public getProfiles(): UserProfile[] {
     const data = localStorage.getItem(STORAGE_KEYS.PROFILES);
-    if (!data) {
+    if (!data || data.includes('Tomás') || data.includes('1234')) {
       localStorage.setItem(STORAGE_KEYS.PROFILES, JSON.stringify(INITIAL_PROFILES));
+      this.setActiveUser(INITIAL_PROFILES[0]);
       return INITIAL_PROFILES;
     }
     return JSON.parse(data);

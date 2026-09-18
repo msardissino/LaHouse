@@ -28,7 +28,7 @@ export const PinLoginModal: React.FC<PinLoginModalProps> = ({
       setError(false);
 
       if (next.length === 4 && selectedProfile) {
-        if (selectedProfile.pin === next || next === '1234') {
+        if (selectedProfile.pin === next || next === '1420') {
           onSelectUser(selectedProfile);
           if (onClose) onClose();
         } else {
@@ -83,7 +83,7 @@ export const PinLoginModal: React.FC<PinLoginModalProps> = ({
               >
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-base shadow-sm"
-                  style={{ backgroundColor: p.avatarColor || '#F97316' }}
+                  style={{ backgroundColor: p.avatarColor || '#1B4332' }}
                 >
                   {p.name.charAt(0)}
                 </div>
@@ -122,7 +122,7 @@ export const PinLoginModal: React.FC<PinLoginModalProps> = ({
 
         {error && (
           <p className="text-xs font-semibold text-rose-500 mb-3 animate-shake">
-            PIN incorrecto. (Por defecto: 1234)
+            PIN incorrecto. (Clave: 1420)
           </p>
         )}
 
@@ -141,7 +141,7 @@ export const PinLoginModal: React.FC<PinLoginModalProps> = ({
 
           {/* Empty spacer or quick fill */}
           <div className="flex items-center justify-center text-[10px] text-stone-400 font-mono">
-            PIN: 1234
+            PIN: 1420
           </div>
 
           <button
